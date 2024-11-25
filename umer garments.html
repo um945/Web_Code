@@ -1,0 +1,189 @@
+<html>
+<head>
+<style>
+/* Grid container */
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* Define specific row heights for each row */
+  grid-template-rows: 
+    100px    /* Row 1: Navbar */
+    50px    /* Row 2: Item List */
+    350px    /* Row 3: Slider */
+    130px    /* Row 4: Winter Collection */
+    350px    /* Row 5: Box 1 */
+    50px    /* Row 6: Add Text */
+    350px    /* Row 7: Box 5 */
+    50px     /* Row 8: Gap */
+    350px    /* Row 9: Box 9 */
+    50px     /* Row 10: Gap 2 */
+    350px    /* Row 11: Box 13 */
+    50px    /* Row 12: Box 16 */
+    100px;   /* Row 13: Box 14 */
+  
+  gap: 0px 0px; /* Initial gap for the entire grid (no gap between rows and columns) */
+  grid-auto-flow: row;
+  grid-template-areas:
+    "navbar navbar navbar navbar"
+    "item-list item-list item-list item-list"
+    "slider slider slider slider"
+    "winter-collection winter-collection winter-collection winter-collection"
+    "box1 box2 box3 box4"
+    "add-text add-text add-text add-text"
+    "box5 box6 box7 box8"
+    "gap gap gap gap"
+    "box9 box10 box11 box12"
+    "gap2 gap2 gap2 gap2"
+    "box13 box14 box15 box16";
+  
+  /* Allow content to overflow if it's too large for the screen */
+  overflow: auto;
+}
+
+/* Navbar styling */
+.navbar {
+  grid-area: navbar;
+  background-color: white;  /* Set the background color to white */
+  display: flex;
+  justify-content: space-between; /* Distribute space between the items */
+  align-items: center; /* Center the items vertically */
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2C3E50;  /* Dark color for text */
+  font-family: 'Arial', sans-serif;
+}
+
+.navbar span {
+  font-size: 32px;
+  font-weight: 900;
+  text-transform: uppercase; /* Make text uppercase */
+}
+
+/* Unique Styling for Each Letter */
+.navbar span span {
+  display: inline-block;
+  font-size: 40px; /* Larger font size */
+  font-weight: 700;
+  transition: all 0.3s ease; /* Smooth transition for color and transform */
+}
+
+.navbar .g { color: #FF5733; transform: rotate(-10deg); }
+.navbar .a { color: #33FF57; transform: rotate(10deg); }
+.navbar .r { color: #3498DB; transform: rotate(-15deg); }
+.navbar .m { color: #F39C12; transform: rotate(15deg); }
+.navbar .e { color: #8E44AD; transform: rotate(-5deg); }
+.navbar .n { color: #F4D03F; transform: rotate(10deg); }
+.navbar .t { color: #E74C3C; transform: rotate(-10deg); }
+.navbar .s { color: #2ECC71; transform: rotate(5deg); }
+
+.navbar .u { color: #FF5733; transform: rotate(-10deg); }
+.navbar .n2 { color: #33FF57; transform: rotate(10deg); }
+.navbar .i { color: #3498DB; transform: rotate(-15deg); }
+.navbar .q { color: #F39C12; transform: rotate(15deg); }
+.navbar .u2 { color: #8E44AD; transform: rotate(-5deg); }
+.navbar .e2 { color: #F4D03F; transform: rotate(10deg); }
+
+/* Center the Search Button inside the navbar */
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: 2px solid #FF5733;  /* Border color matching the theme */
+  background-color: transparent;
+  color: #FF5733;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #FF5733; /* Add a background color on hover */
+  color: white; /* Change text color to white */
+}
+
+.search-btn i {
+  margin-right: 8px; /* Space between the icon and text */
+  font-size: 18px; /* Adjust the size of the icon */
+}
+
+/* Add gap for boxes only (apply to the box grid rows) */
+.container > .box1, .container > .box2, .container > .box3, .container > .box4,
+.container > .box5, .container > .box6, .container > .box7, .container > .box8,
+.container > .box9, .container > .box10, .container > .box11, .container > .box12,
+.container > .box13, .container > .box14, .container > .box15, .container > .box16 {
+  margin-right: 20px;  /* Add right margin to create a gap between boxes */
+}
+
+.item-list { grid-area: item-list; background-color: #33FF57; }
+.slider { grid-area: slider; background-color: #3357FF; }
+.winter-collection { grid-area: winter-collection; background-color: #F1C40F; }
+.add-text { grid-area: add-text; background-color: #9B59B6; }
+.box1 { grid-area: box1; background-color: #E74C3C; }
+.box2 { grid-area: box2; background-color: #2ECC71; }
+.box3 { grid-area: box3; background-color: #3498DB; }
+.box4 { grid-area: box4; background-color: #F39C12; }
+.box5 { grid-area: box5; background-color: #8E44AD; }
+.box6 { grid-area: box6; background-color: #1ABC9C; }
+.box7 { grid-area: box7; background-color: #16A085; }
+.box8 { grid-area: box8; background-color: #2980B9; }
+.gap { grid-area: gap; background-color: #D5DBDB; }
+.box9 { grid-area: box9; background-color: #E67E22; }
+.box10 { grid-area: box10; background-color: #F4D03F; }
+.box11 { grid-area: box11; background-color: #C0392B; }
+.box12 { grid-area: box12; background-color: #7F8C8D; }
+.gap2 { grid-area: gap2; background-color: #BDC3C7; }
+.box13 { grid-area: box13; background-color: #8E44AD; }
+.box14 { grid-area: box14; background-color: #2980B9; }
+.box15 { grid-area: box15; background-color: #16A085; }
+.box16 { grid-area: box16; background-color: #F39C12; }
+
+/* Add 15px gap between the "Unique" and "Garments" text */
+.navbar span:first-child {
+  margin-right: 15px; /* Apply margin to create the gap */
+}
+</style>
+<!-- You can use an icon from Font Awesome for the search icon -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <div class="navbar">
+    <!-- Unique text -->
+    <span><span class="u">U</span><span class="n2">n</span><span class="i">i</span><span class="q">q</span><span class="u2">u</span><span class="e2">e</span></span>
+    <!-- Gap between "Unique" and "Garments" -->
+    <span><span class="g">G</span><span class="a">a</span><span class="r">r</span><span class="m">m</span><span class="e">e</span><span class="n">n</span><span class="t">t</span><span class="s">s</span></span>
+    <!-- Search Button in the center -->
+    <button class="search-btn">
+      <i class="fas fa-search"></i> Search Product
+    </button>
+  </div>
+  <div class="item-list">Item List</div>
+  <div class="slider">Slider</div>
+  <div class="winter-collection">Winter Collection</div>
+  <div class="add-text">Add Text</div>
+  <div class="box1">Box 1</div>
+  <div class="box2">Box 2</div>
+  <div class="box3">Box 3</div>
+  <div class="box4">Box 4</div>
+  <div class="box5">Box 5</div>
+  <div class="box6">Box 6</div>
+  <div class="box7">Box 7</div>
+  <div class="box8">Box 8</div>
+  <div class="gap">Gap</div>
+  <div class="box9">Box 9</div>
+  <div class="box10">Box 10</div>
+  <div class="box11">Box 11</div>
+  <div class="box12">Box 12</div>
+  <div class="gap2">Gap 2</div>
+  <div class="box13">Box 13</div>
+  <div class="box14">Box 14</div>
+  <div class="box15">Box 15</div>
+  <div class="box16">Box 16</div>
+</div>
+</body>
+</html>

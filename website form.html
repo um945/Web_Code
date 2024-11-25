@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Product</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .form-container {
+      width: 80%;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin: 10px 0 5px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input, select, textarea, button {
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <h2>Add Product</h2>
+    <form id="product-form">
+      <label for="product-name">Product Name:</label>
+      <input type="text" id="product-name" name="product-name" placeholder="Enter product name" required>
+
+      <label for="product-description">Product Description:</label>
+      <textarea id="product-description" name="product-description" placeholder="Enter product description" rows="4" required></textarea>
+
+      <label for="product-category">Product Category:</label>
+      <select id="product-category" name="product-category" required>
+        <option value="">Select Category</option>
+        <option value="t-shirts">T-shirts</option>
+        <option value="jeans">Jeans</option>
+        <option value="jackets">Jackets</option>
+        <option value="dresses">Dresses</option>
+        <option value="others">Others</option>
+      </select>
+
+      <label for="product-price">Price (in USD):</label>
+      <input type="number" id="product-price" name="product-price" min="0" step="0.01" placeholder="Enter product price" required>
+
+      <label for="product-stock">Stock Quantity:</label>
+      <input type="number" id="product-stock" name="product-stock" min="1" value="1" required>
+
+      <label for="product-image">Upload Product Image:</label>
+      <input type="file" id="product-image" name="product-image" accept="image/*" required>
+
+      <label for="additional-notes">Additional Notes (Optional):</label>
+      <textarea id="additional-notes" name="additional-notes" placeholder="Enter any additional details" rows="4"></textarea>
+
+      <button type="submit">Add Product</button>
+    </form>
+  </div>
+
+  <script>
+    // Function to get existing products from Local Storage or create an empty array
+    function getProducts() {
+      return JSON.parse(localStorage.getItem('products')) || [];
+    }
+
+    // Function to save the updated product list to Local Storage
+    function saveProducts(products) {
+      localStorage.setItem('products', JSON.stringify(products));
+    }
+
+    // Form submission handler
+    document.getElementById('product-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission to server
+
+      const productName = document.getElementById('product-name').value;
+      const productDescription = document.getElementById('product-description').value;
+      const productCategory = document.getElementById('product-category').value;
+      const productPrice = document.getElementById('product-price').value;
+      const productStock = document.getElementById('product-stock').value;
+      const productImage = document.getElementById('product-image').files[0];
+      const additionalNotes = document.getElementById('additional-notes').value;
+
+      const productData = {
+        name: productName,
+        description: productDescription,
+        category: productCategory,
+        price: productPrice,
+        stock: productStock,
+        notes: additionalNotes
+      };
+
+      // If image is provided, store the image as a base64 string
+      if (productImage) {
+        const reader = new FileReader();
+        reader.onloadend = function() {
+          productData.image = reader.result; // Convert image to base64
+
+          const products = getProducts();
+          products.push(productData);
+          saveProducts(products);
+
+          window.location.href = 'product-details.html'; // Redirect after saving
+        };
+        reader.readAsDataURL(productImage);
+      } else {
+        // If no image, add the product without the image
+        const products = getProducts();
+        products.push(productData);
+        saveProducts(products);
+
+        window.location.href = 'product-details.html'; // Redirect after saving
+      }
+    });
+  </script>
+
+</body>
+</html>

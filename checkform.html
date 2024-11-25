@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+  <style>
+    .card {
+      width: 80%;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .card .details {
+      margin-top: 15px;
+    }
+
+    .card h3 {
+      margin: 5px 0;
+      font-size: 22px;
+    }
+
+    .card p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .card .price {
+      font-weight: bold;
+      font-size: 20px;
+      color: #4CAF50;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="product-cards-container"></div>
+
+  <script>
+    // Function to initialize sample product data in Local Storage (uncomment to run once)
+    // localStorage.setItem('products', JSON.stringify([
+    //   {
+    //     "name": "Example Product",
+    //     "category": "Electronics",
+    //     "description": "This is an example product.",
+    //     "price": 99.99,
+    //     "stock": 25,
+    //     "image": "https://via.placeholder.com/600x400",
+    //     "notes": "Limited time offer"
+    //   }
+    // ]));
+
+    // Retrieve the product list from Local Storage
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+
+    // Function to display multiple product cards
+    function displayProductCards(products) {
+      const container = document.getElementById('product-cards-container');
+      container.innerHTML = ''; // Clear previous content
+
+      // Check if the product array is empty
+      if (products.length === 0) {
+        const message = document.createElement('p');
+        message.textContent = 'No products available.';
+        container.appendChild(message);
+        return;
+      }
+
+      // Loop through each product and create a card
+      products.forEach(product => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        let imageHtml = '';
+        if (product.image) {
+          imageHtml = `<img src="${product.image}" alt="Product Image">`;
+        }
+
+        card.innerHTML = `
+          ${imageHtml}
+          <div class="details">
+            <h3>${product.name}</h3>
+            <p>Category: ${product.category}</p>
+            <p>${product.description}</p>
+            <p class="price">$${parseFloat(product.price).toFixed(2)}</p>
+            <p>Stock: ${product.stock}</p>
+            ${product.notes ? `<p>Notes: ${product.notes}</p>` : ''}
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    // Display the product cards
+    displayProductCards(products);
+
+  </script>
+
+</body>
+</html>

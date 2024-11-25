@@ -1,0 +1,65 @@
+<html>
+
+<head>
+
+<style>
+
+
+.container {  display: grid;
+
+height:100vh;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  grid-template-rows: 0.6fr 1.5fr 1.1fr 1.4fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "navbar navbar navbar navbar"
+    "sidebar slider slider slider"
+    "sidebar box1 box2 box3"
+    "sidebar footer footer footer";
+}
+
+.navbar { grid-area: navbar; 
+
+background-color:blue;
+
+
+}
+
+.sidebar { grid-area: sidebar;background-color:black; }
+
+.slider { grid-area: slider;background-color:pink; }
+
+.box1 { grid-area: box1;background-color:red; }
+
+.box2 { grid-area: box2;background-color:yellow; }
+
+.box3 { grid-area: box3;background-color:orange; }
+
+.footer { grid-area: footer;background-color:lightblue; }
+
+
+</style>
+
+
+</head>
+
+<body>
+
+
+<div class="container">
+  <div class="navbar">navbar</div>
+  <div class="sidebar">sidebar</div>
+  <div class="slider">slider</div>
+  <div class="box1">box1</div>
+  <div class="box2">box2</div>
+  <div class="box3">box3</div>
+  <div class="footer">footer</div>
+</div>
+
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Layout</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .container {
+            display: flex;
+            min-height: calc(100vh - 100px); /* Adjust height considering navbar and footer */
+        }
+
+        .left-sidebar, .right-sidebar {
+            background-color: lightblue;
+            width: 200px;
+            padding: 15px;
+        }
+
+        .main-box {
+            flex: 1;
+            background-color: gray;
+            padding: 15px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            width: 100%;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media only screen and (max-width: 800px) {
+            .container {
+                display: grid;
+                grid-template-columns: 1fr; /* Single column layout */
+                grid-template-rows: repeat(5, auto); /* Five rows */
+                gap: 10px; /* Space between items */
+            }
+
+            .navbar {
+                grid-row: 1; /* First row */
+            }
+
+            .left-sidebar {
+                display: none; /* Hide left sidebar on mobile */
+            }
+
+            .main-box {
+                grid-row: 2; /* Second row */
+            }
+
+            .right-sidebar {
+                display: none; /* Hide right sidebar on mobile */
+            }
+
+            .footer {
+                grid-row: 5; /* Fifth row */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">Navigation Bar</header>
+    <div class="container">
+        <aside class="left-sidebar">Left Sidebar</aside>
+        <main class="main-box">Main Box Content</main>
+        <aside class="right-sidebar">Right Sidebar</aside>
+    </div>
+    <footer class="footer">Footer</footer>
+</body>
+</html>

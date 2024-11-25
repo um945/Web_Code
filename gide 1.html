@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .navbar {
+            background-color: green;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        .sidebar {
+            width: 25%;
+            background-color: yellow;
+            padding: 15px;
+        }
+        .main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Three columns */
+            gap: 10px;
+            width: 75%;
+            padding: 15px;
+        }
+        .box {
+            background-color: blue;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        .box.box4 {
+            width: 874px; /* Fixed width for Box 4 */
+            grid-column: span 3; /* Box 4 spans all columns */
+            background-color: gray; /* Change color if needed */
+        }
+        .footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        HOME order products
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            Right Sidebar
+        </div>
+        <div class="main">
+            <div class="box" style="background-color: blue;">Box 1</div>
+            <div class="box" style="background-color: pink;">Box 2</div>
+            <div class="box" style="background-color: lightblue;">Box 3</div>
+            <div class="box box4">Box 4</div> <!-- Box 4 with fixed width -->
+        </div>
+    </div>
+
+    <div class="footer">
+        Footer Content
+    </div>
+	 
+
+</body>
+</html>

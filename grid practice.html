@@ -1,0 +1,58 @@
+<html>
+<head>
+<style>
+
+div.ali{
+grid-area:sidebar;
+background-color:red;
+}
+div.ahmad{
+grid-area:main;
+background-color:blue;
+}
+div.sikandr{
+grid-area:box1;
+background-color:yellow;
+}
+div.amar{
+grid-area:box2;
+background-color:brown;
+}
+div.bilal{
+grid-area:box13;
+
+background-color:lightgreen;
+}
+div.abdullah{
+grid-area:nav;
+background-color:pink;
+}
+
+.main{
+display:grid;
+height:100vh;
+grid-template-columns:1fr 1fr 1fr 1fr;
+
+grid-template-rows:1fr 1fr 1fr;
+grid-template-areas:"nav nav nav nav"
+"sidebar main main box13"
+"sidebar box1 box2 box13 ";
+
+
+
+}
+</style>
+
+</head>
+<body>
+
+<div class="main">
+<div class="ali">1</div>
+<div class="ahmad">2</div>
+<div class="sikandr">3</div>
+<div class="amar">4</div>
+<div class="bilal">5</div>
+<div class="abdullah">6</div>
+</div>
+</body>
+</html>
